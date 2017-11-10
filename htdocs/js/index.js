@@ -62,3 +62,5 @@ break;
 // log message to Console
 11
 console.log(' 伺服器啓動，連線 url: http://127.0.0.1:8088/');
+// index.js
+2.2 建⽴路由
