@@ -46,11 +46,12 @@ let levels = [
   [
     "############",
     "#          #",
-    "#          #",
+    "#         .#",
     "#          #",
     "#   ####   #",
     "#          #",
     "#    .     #",
+    "#          #",
     "#    $     #",
     "#    @     #",
     "#          #",
@@ -192,7 +193,7 @@ let prototypeGameState = {
   },
 
   isGoal: function ({x, y}) {
-    return (this.level[y].charAt(x) == SOKOBAN.GOAL);
+  return (this.level[y].charAt(x) == SOKOBAN.GOAL);
   },
 
   isMan: function ({x, y}) {
@@ -246,15 +247,15 @@ let prototypeGameState = {
 
   moveBoxIn: function (cell) {
     if (this.isGoal(cell)) {
-      this.putBoxOnGoal(cell)
-      return this.GameOver(true);
-    }
-    else {
-      this.putBox(cell);
-    };
+        this.putBoxOnGoal(cell);
 
-    return this;
-  },
+      }
+      else {
+        this.putBox(cell);
+      };
+
+      return this;
+    },
 
   moveBoxOut: function (cell) {
     if (this.isBoxOnGoal(cell)) {
@@ -440,10 +441,22 @@ let prototypeGameState = {
   },
 
   GameOver: function (){
-          alert("123");
+    var finished = true,i,j;
 
-    return this;
+    for (var i = 0; i < this.level.length; i++) {
+      for (var j = 0; j < this.level[i].length; j++) {
+        if(this.level[i][j] == SOKOBAN.GOAL||this.level[i][j] == SOKOBAN.BOX){
+          finished = false;
+        }
+      }
+    }
+    if(finished){
+      alert("你贏了喔");
+    }
   }
+
+  }
+
 
 };
 
